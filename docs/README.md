@@ -1,4 +1,10 @@
-# Tekton Pipelines
+---
+title: "Tasks and Pipelines"
+linkTitle: "Tasks and Pipelines"
+weight: 1
+description: >
+  Building Blocks of Tekton CI/CD Workflow
+---
 
 Tekton Pipelines is an open source implementation to configure and run CI/CD
 style pipelines for your Kubernetes application.

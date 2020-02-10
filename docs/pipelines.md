@@ -1,4 +1,13 @@
-# Pipelines
+---
+title: "Pipelines"
+linkTitle: "Pipelines"
+weight: 3
+---
+
+{{% tutorial name="Connecting Blocks: Tekton Pipelines"
+             katacoda-src="ratrosyu/pipelines"
+             github-lnk="michaelawyu/tekton-examples/tree/master/pipelines"
+             qwiklabs-lnk="" %}}
 
 This document defines `Pipelines` and their capabilities.
 

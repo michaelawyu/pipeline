@@ -1,4 +1,8 @@
-# TaskRuns
+---
+title: "TaskRuns"
+linkTitle: "TaskRuns"
+weight: 2
+---
 
 Use the `TaskRun` resource object to create and run on-cluster processes to
 completion.

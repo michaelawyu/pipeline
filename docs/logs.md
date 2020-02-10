@@ -1,4 +1,8 @@
-# Logs
+---
+title: "Logs"
+linkTitle: "Logs"
+weight: 8
+---
 
 Logs for [`PipelineRuns`](pipelineruns.md) and [`TaskRuns`](taskruns.md) are
 associated with the underlying pod.

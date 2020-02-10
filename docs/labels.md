@@ -1,4 +1,8 @@
-# Labels
+---
+title: "Labels"
+linkTitle: "Labels"
+weight: 9
+---
 
 In order to make it easier to identify objects that are all part of the same
 conceptual pipeline, custom

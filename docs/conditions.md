@@ -1,4 +1,8 @@
-# Conditions
+---
+title: "Conditions"
+linkTitle: "Conditions"
+weight: 10
+---
 
 This document defines `Conditions` and their capabilities.
 
