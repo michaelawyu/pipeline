@@ -28,7 +28,7 @@ propagated to the corresponding `TaskRuns` and then to `Pods`.
 
 For `TaskRuns` executed directly, not as part of a `Pipeline`, labels are
 propagated from the referenced `Task` (if one exists, see the
-[Specifying a `Task`](taskruns.md#specifying-a-task) section of the `TaskRun`
+[Specifying a `Task`](/docs/pipelines/taskruns#specifying-a-task) section of the `TaskRun`
 documentation) to the corresponding `TaskRun` and then to the `Pod`.
 
 For `Conditions`, labels are propagated automatically to the corresponding `TaskRuns`
@@ -47,7 +47,7 @@ The following labels are added to resources automatically:
   creation of the `TaskRun`.
 - `tekton.dev/task` is added to `TaskRuns` (and propagated to `Pods`) that
   reference an existing `Task` (see the
-  [Specifying a `Task`](taskruns.md#specifying-a-task) section of the `TaskRun`
+  [Specifying a `Task`](/docs/pipelines/taskruns#specifying-a-task) section of the `TaskRun`
   documentation), and contains the name of the `Task` that the `TaskRun`
   references.
 - `tekton.dev/taskRun` is added to `Pods`, and contains the name of the

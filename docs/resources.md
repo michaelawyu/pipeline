@@ -5,7 +5,7 @@ weight: 5
 ---
 
 `PipelineResources` in a pipeline are the set of objects that are going to be
-used as inputs to a [`Task`](tasks.md) and can be output by a `Task`.
+used as inputs to a [`Task`](/docs/pipelines/tasks) and can be output by a `Task`.
 
 A `Task` can have multiple inputs and outputs.
 
@@ -64,15 +64,15 @@ following fields:
 
 ## Using Resources
 
-Resources can be used in [Tasks](./tasks.md) and
-[Conditions](./conditions.md#resources).
+Resources can be used in [Tasks](/docs/pipelines/tasks) and
+[Conditions](/docs/pipelines/conditions#resources).
 
 Input resources, like source code (git) or artifacts, are dumped at path
 `/workspace/task_resource_name` within a mounted
 [volume](https://kubernetes.io/docs/concepts/storage/volumes/) and are available
 to all [`steps`](#steps) of your `Task`. The path that the resources are mounted
 at can be
-[overridden with the `targetPath` field](./resources.md#controlling-where-resources-are-mounted).
+[overridden with the `targetPath` field](/docs/pipelines/resources#controlling-where-resources-are-mounted).
 Steps can use the `path`[variable substitution](#variable-substitution) key to
 refer to the local path to the mounted resource.
 
@@ -503,7 +503,7 @@ spec:
 ### Image Resource
 
 An `image` resource represents an image that lives in a remote repository. It is
-usually used as [a `Task` `output`](tasks.md#outputs) for `Tasks` that build
+usually used as [a `Task` `output`](/docs/pipelines/tasks#outputs) for `Tasks` that build
 images. This allows the same `Tasks` to be used to generically push to any
 registry.
 
@@ -675,7 +675,7 @@ spec:
 ```
 
 Example usage of the `cluster` resource in a `Task`, using
-[variable substitution](tasks.md#variable-substitution):
+[variable substitution](/docs/pipelines/tasks#variable-substitution):
 
 ```yaml
 apiVersion: tekton.dev/v1alpha1
@@ -901,7 +901,7 @@ Params that can be added are the following:
         manifest file.
 
 Private buckets other than the ones accessible by a
-[TaskRun Service Account](./taskruns.md#service-account) can not be configured
+[TaskRun Service Account](/docs/pipelines/taskruns#service-account) can not be configured
 as `storage` resources for the `build-gcs` storage resource right now. This is
 because the container image
 [gcr.io/cloud-builders//gcs-fetcher](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher)

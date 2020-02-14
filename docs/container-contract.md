@@ -4,7 +4,7 @@ linkTitle: "Container Contracts"
 weight: 7
 ---
 
-Each container image used as a step in a [`Task`](tasks.md) must comply with a
+Each container image used as a step in a [`Task`](/docs/pipelines/tasks) must comply with a
 specific contract.
 
 ## Entrypoint

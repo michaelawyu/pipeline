@@ -66,16 +66,16 @@ is validated against the type field.
 
 ### Resources
 
-Conditions can declare input [`PipelineResources`](resources.md)  via the `resources` field to 
+Conditions can declare input [`PipelineResources`](/docs/pipelines/resources)  via the `resources` field to 
 provide the Condition container step with data or context that is needed to perform the check.
 
 Resources in Conditions work similar to the way they work in `Tasks` i.e. they can be accessed using
-[variable substitution](./resources.md#variable-substitution) and the `targetPath` field can be used
-to [control where the resource is mounted](./resources.md#controlling-where-resources-are-mounted)
+[variable substitution](/docs/pipelines/resources#variable-substitution) and the `targetPath` field can be used
+to [control where the resource is mounted](/docs/pipelines/resources#controlling-where-resources-are-mounted)
 
 ## Labels
 
-[Labels](labels.md) defined as part of the `Condition` metadata will be automatically propagated to the `Pod`.
+[Labels](/docs/pipelines/labels) defined as part of the `Condition` metadata will be automatically propagated to the `Pod`.
 
 ## Examples
 

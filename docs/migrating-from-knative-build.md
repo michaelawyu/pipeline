@@ -22,13 +22,13 @@ Pipeline, and provide additional flexibility and reusability.
 * All `steps` must have a `name`.
 
 * BuildTemplate
-  [`parameters`](https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#parameters)
+  [`parameters`](/docs/pipelines/tasks#parameters)
   are moved inside Task's `input.params` field, and parameter placeholder
   strings (e.g., `${FOO}`) must be specified like `$(input.parameters.FOO)`
-  (see [variable substitution](tasks.md#variable-substitution)).
+  (see [variable substitution](/docs/pipelines/tasks#variable-substitution)).
 
 * Tasks must specify
-  [`input.resources`](https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#input-resources)
+  [`input.resources`](/docs/pipelines/tasks#input-resources)
   if they need to operate on a resource (e.g., source from a Git repo).
   BuildTemplates did not specify input resource requirements, and just assumed
   whatever source was available.
@@ -40,17 +40,17 @@ Pipeline, and provide additional flexibility and reusability.
   the Task's `steps`, or at least be aware that source will not be cloned into
   `/workspace` as was the case with Knative Builds. See [Controlling where
   resources are
-  mounted](https://github.com/tektoncd/pipeline/blob/master/docs/tasks.md#controlling-where-resources-are-mounted)
+  mounted](/docs/pipelines/tasks#controlling-where-resources-are-mounted)
   for more information.
 
 * TaskRuns which specify a PipelineResource to satisfy a Task's `input.resources`
   can do so either by referencing an existing PipelineResource resource in its
   `resourceRef`, or by fully specifying the resource in its
-  [`resourceSpec`](https://github.com/tektoncd/pipeline/blob/master/docs/taskruns.md#providing-resources).
+  [`resourceSpec`](/docs/pipelines/taskruns#providing-resources).
 
 * Because of how steps are serialized without relying on init containers, steps
   should specify a `command` instead of
-  [`entrypoint`](https://github.com/tektoncd/pipeline/blob/master/docs/container-contract.md#entrypoint)
+  [`entrypoint`](/docs/pipelines/container-contract#entrypoint)
   and `args`. If the image's `entrypoint` isn't defined, Tekton will attempt
   to determine the image's entrypoint. This field can be a list of strings,
   so instead of specifying `args: ['foo', 'bar']` and assuming the image's

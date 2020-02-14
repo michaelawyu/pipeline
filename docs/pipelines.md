@@ -43,13 +43,13 @@ following fields:
       them
 - Optional:
   - [`resources`](#declared-resources) - Specifies which
-    [`PipelineResources`](resources.md) of which types the `Pipeline` will be
+    [`PipelineResources`](/docs/pipelines/resources) of which types the `Pipeline` will be
     using in its [Tasks](#pipeline-tasks)
   - `tasks`
     - `resources.inputs` / `resource.outputs`
       - [`from`](#from) - Used when the content of the
-        [`PipelineResource`](resources.md) should come from the
-        [output](tasks.md#outputs) of a previous [Pipeline Task](#pipeline-tasks)
+        [`PipelineResource`](/docs/pipelines/resources) should come from the
+        [output](/docs/pipelines/tasks#outputs) of a previous [Pipeline Task](#pipeline-tasks)
       - [`runAfter`](#runAfter) - Used when the [Pipeline Task](#pipeline-tasks)
         should be executed after another Pipeline Task, but there is no
         [output linking](#from) required
@@ -65,7 +65,7 @@ following fields:
 ### Declared resources
 
 In order for a `Pipeline` to interact with the outside world, it will probably
-need [`PipelineResources`](resources.md) which will be given to
+need [`PipelineResources`](/docs/pipelines/resources) which will be given to
 `Tasks` as inputs and outputs.
 
 Your `Pipeline` must declare the `PipelineResources` it needs in a `resources`
@@ -88,7 +88,7 @@ spec:
 `workspaces` are a way of declaring volumes you expect to be made available to your
 executing `Pipeline` and its `Task`s. They are similar to [`volumes`](#volumes) but
 allow you to enforce at runtime that the volumes have been attached and
-[allow you to specify subpaths](taskruns.md#workspaces) in the volumes to attach.
+[allow you to specify subpaths](/docs/pipelines/taskruns#workspaces) in the volumes to attach.
 
 Any `Pipeline` using a `Task` that declares a workspace will need to provide one at
 runtime. Doing so requires two additions in a Pipeline:
@@ -160,7 +160,7 @@ parameters can be passed to the `Pipeline` from a `PipelineRun`.
 
 Input parameters in the form of `$(params.foo)` are replaced inside of the
 [`PipelineTask` parameters' values](#pipeline-tasks) (see also
-[variable substitution](tasks.md#variable-substitution)).
+[variable substitution](/docs/pipelines/tasks#variable-substitution)).
 
 The following `Pipeline` declares an input parameter called 'context', and uses
 it in the `PipelineTask`'s parameter. The `description` and `default` fields for
@@ -207,9 +207,9 @@ spec:
 
 ### Pipeline Tasks
 
-A `Pipeline` will execute a graph of [`Tasks`](tasks.md) (see
+A `Pipeline` will execute a graph of [`Tasks`](/docs/pipelines/tasks) (see
 [ordering](#ordering) for how to express this graph). A valid `Pipeline` 
-declaration must include a reference to at least one [`Task`](tasks.md). Each
+declaration must include a reference to at least one [`Task`](/docs/pipelines/tasks). Each
 `Task` within a `Pipeline` must have a
 [valid](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names)
 name and task reference, for example:
@@ -239,7 +239,7 @@ spec:
             resource: my-image
 ```
 
-[Parameters](tasks.md#parameters) can also be provided:
+[Parameters](/docs/pipelines/tasks#parameters) can also be provided:
 
 ```yaml
 spec:
@@ -260,7 +260,7 @@ Sometimes you will have [Pipeline Tasks](#pipeline-tasks) that need to take as
 input the output of a previous `Task`, for example, an image built by a previous
 `Task`.
 
-Express this dependency by adding `from` on [`PipelineResources`](resources.md)
+Express this dependency by adding `from` on [`PipelineResources`](/docs/pipelines/resources)
 that your `Tasks` need.
 
 - The (optional) `from` key on an `input source` defines a set of previous
@@ -306,7 +306,7 @@ regardless of the order they appear in the spec.
 
 Sometimes you will need to have [Pipeline Tasks](#pipeline-tasks) that need to
 run in a certain order, but they do not have an explicit
-[output](tasks.md#outputs) to [input](tasks.md#inputs) dependency (which is
+[output](/docs/pipelines/tasks#outputs) to [input](/docs/pipelines/tasks#inputs) dependency (which is
 expressed via [`from`](#from)). In this case you can use `runAfter` to indicate
 that a Pipeline Task should be run after one or more previous Pipeline Tasks.
 
@@ -363,7 +363,7 @@ triggered: a max of two executions.
 #### conditions
 
 Sometimes you will need to run tasks only when some conditions are true. The `conditions` field 
-allows you to list a series of references to [`Conditions`](./conditions.md) that are run before the task
+allows you to list a series of references to [`Conditions`](/docs/pipelines/conditions) that are run before the task
 is run. If all of the conditions evaluate to true, the task is run. If any of the conditions are false,
 the Task is not run. Its status.ConditionSucceeded is set to False with the reason set to  `ConditionCheckFailed`.
 However, unlike regular task failures, condition failures do not automatically fail the entire pipeline 
@@ -422,7 +422,7 @@ before another (i.e. _Directed_), and the execution will eventually complete
 
 This is done using:
 
-- [`from`](#from) clauses on the [`PipelineResources`](resources.md) needed by a
+- [`from`](#from) clauses on the [`PipelineResources`](/docs/pipelines/resources) needed by a
   `Task`
 - [`runAfter`](#runAfter) clauses on the [Pipeline Tasks](#pipeline-tasks)
 

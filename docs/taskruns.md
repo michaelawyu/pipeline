@@ -4,10 +4,15 @@ linkTitle: "TaskRuns"
 weight: 2
 ---
 
+{{% tutorial name="Running Tekton Tasks and Pipelines"
+             katacoda-src="ratrosyu/runs"
+             github-lnk="michaelawyu/tekton-examples/tree/master/runs"
+             qwiklabs-lnk="" %}}
+
 Use the `TaskRun` resource object to create and run on-cluster processes to
 completion.
 
-To create a `TaskRun`, you must first create a [`Task`](tasks.md) which
+To create a `TaskRun`, you must first create a [`Task`](/docs/pipelines/tasks) which
 specifies one or more container images that you have implemented to perform and
 complete a task.
 
@@ -29,7 +34,7 @@ A `TaskRun` runs until all `steps` have completed or until a failure occurs.
 - [Cancelling a TaskRun](#cancelling-a-taskrun)
 - [Examples](#examples)
 - [Sidecars](#sidecars)
-- [Logs](logs.md)
+- [Logs](/docs/pipelines/logs)
 - [LimitRange Name](#limitrange-name)
 
 ---
@@ -48,7 +53,7 @@ following fields:
   - [`spec`][kubernetes-overview] - Specifies the configuration information for
     your `TaskRun` resource object.
     - [`taskRef` or `taskSpec`](#specifying-a-task) - Specifies the details of
-      the [`Task`](tasks.md) you want to run
+      the [`Task`](/docs/pipelines/tasks) you want to run
 - Optional:
 
   - [`serviceAccountName`](#service-account) - Specifies a `ServiceAccount` resource
@@ -62,9 +67,9 @@ following fields:
     `timeout` is empty, the default timeout will be applied. If the value is set to 0,
     there is no timeout. You can also follow the instruction [here](#Configuring-default-timeout)
     to configure the default timeout.
-  - [`podTemplate`](#pod-template) - Specifies a [pod template](./podtemplates.md) that will be used as the basis for the `Task` pod.
+  - [`podTemplate`](#pod-template) - Specifies a [pod template](/docs/pipelines/podtemplates) that will be used as the basis for the `Task` pod.
   - [`workspaces`](#workspaces) - Specify the actual volumes to use for the
-    [workspaces](tasks.md#workspaces) declared by a `Task`
+    [workspaces](/docs/pipelines/tasks#workspaces) declared by a `Task`
   - [`limitRangeName`](#limitrange-name) - Specifies the name of a LimitRange that exists in the namespace of the `TaskRun`. This LimitRange's minimum 
     for container resource requests will be used as part of requesting the appropriate amount of CPU, memory, and ephemeral storage for containers that are 
     part of a `TaskRun`. This property only needs to be specified if the `TaskRun` is happening in a namespace with a LimitRange minimum specified for container resource requests.
@@ -74,7 +79,7 @@ following fields:
 
 ### Specifying a task
 
-Since a `TaskRun` is an invocation of a [`Task`](tasks.md), you must specify
+Since a `TaskRun` is an invocation of a [`Task`](/docs/pipelines/tasks), you must specify
 what `Task` to invoke.
 
 You can do this by providing a reference to an existing `Task`:
@@ -109,7 +114,7 @@ spec:
 
 ### Input parameters
 
-If a `Task` has [`parameters`](tasks.md#parameters), you can specify values for
+If a `Task` has [`parameters`](/docs/pipelines/tasks#parameters), you can specify values for
 them using the `input` section:
 
 ```yaml
@@ -124,12 +129,12 @@ If a parameter does not have a default value, it must be specified.
 
 ### Providing resources
 
-If a `Task` requires [input resources](tasks.md#input-resources) or
-[output resources](tasks.md#output-resources), they must be provided to run the
+If a `Task` requires [input resources](/docs/pipelines/tasks#input-resources) or
+[output resources](/docs/pipelines/tasks#output-resources), they must be provided to run the
 `Task`.
 
 They can be provided via references to existing
-[`PipelineResources`](resources.md):
+[`PipelineResources`](/docs/pipelines/resources):
 
 ```yaml
 spec:
@@ -154,7 +159,7 @@ spec:
               value: https://github.com/pivotal-nader-ziada/gohelloworld
 ```
 
-The `paths` field can be used to [override the paths to a resource](./resources.md#overriding-where-resources-are-copied-from)
+The `paths` field can be used to [override the paths to a resource](/docs/pipelines/resources#overriding-where-resources-are-copied-from)
 
 ### Configuring Default Timeout
 
@@ -187,11 +192,11 @@ that is in the [namespace](https://kubernetes.io/docs/concepts/overview/working-
 of the `TaskRun` resource object.
 
 For examples and more information about specifying service accounts, see the
-[`ServiceAccount`](./auth.md) reference topic.
+[`ServiceAccount`](/docs/pipelines/auth) reference topic.
 
 ## Pod Template
 
-Specifies a [pod template](./podtemplates.md) configuration that will be used as the basis for the `Task` pod. This
+Specifies a [pod template](/docs/pipelines/podtemplates) configuration that will be used as the basis for the `Task` pod. This
 allows to customize some Pod specific field per `Task` execution, aka `TaskRun`.
 
 In the following example, the Task is defined with a `volumeMount`
@@ -233,7 +238,7 @@ spec:
 
 ## Workspaces
 
-For a `TaskRun` to execute [a `Task` that declares `workspaces`](tasks.md#workspaces),
+For a `TaskRun` to execute [a `Task` that declares `workspaces`](/docs/pipelines/tasks#workspaces),
 at runtime you need to map the `workspaces` to actual physical volumes with
 `workspaces`. Values in `workspaces` are
 [`Volumes`](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/), however currently we only support a subset of `VolumeSources`:
@@ -517,9 +522,9 @@ the `Task`.
 ### Example Task Reuse
 
 For the sake of illustrating re-use, here are several example
-[`TaskRuns`](taskruns.md) (including referenced
-[`PipelineResources`](resources.md)) instantiating the
-[`Task` (`dockerfile-build-and-push`) in the `Task` example docs](tasks.md#example-task).
+[`TaskRuns`](/docs/pipelines/taskruns) (including referenced
+[`PipelineResources`](/docs/pipelines/resources) instantiating the
+[`Task` (`dockerfile-build-and-push`) in the `Task` example docs](/docs/pipelines/tasks#example-task).
 
 Build `mchmarny/rester-tester`:
 
@@ -676,7 +681,7 @@ that is in the
 of the `Task` resource object.
 
 For examples and more information about specifying service accounts, see the
-[`ServiceAccount`](./auth.md) reference topic.
+[`ServiceAccount`](/docs/pipelines/auth) reference topic.
 
 ## Sidecars
 

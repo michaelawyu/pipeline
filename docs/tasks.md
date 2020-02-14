@@ -81,8 +81,8 @@ following fields:
       to run in your `Task`.
 - Optional:
   - [`inputs`](#inputs) - Specifies parameters and
-    [`PipelineResources`](resources.md) needed by your `Task`
-  - [`outputs`](#outputs) - Specifies [`PipelineResources`](resources.md)
+    [`PipelineResources`](/docs/pipelines/resources) needed by your `Task`
+  - [`outputs`](#outputs) - Specifies [`PipelineResources`](/docs/pipelines/resources)
     created by your `Task`
   - [`results`](#results) - Specifies the result file name where the task can write its result
   - [`volumes`](#volumes) - Specifies one or more volumes that you want to make
@@ -143,9 +143,9 @@ The `steps` field is required. You define one or more `steps` fields to define
 the body of a `Task`.
 
 If multiple `steps` are defined, they will be executed in the same order as they
-are defined, if the `Task` is invoked by a [`TaskRun`](taskruns.md).
+are defined, if the `Task` is invoked by a [`TaskRun`](/docs/pipelines/taskruns).
 Each `steps` in a `Task` must specify a container image that adheres to the
-[container contract](./container-contract.md). For each of the `steps` fields,
+[container contract](/docs/pipelines/container-contract). For each of the `steps` fields,
 or container images that you define:
 
 - The container images are run and evaluated in order, starting from the top of
@@ -304,13 +304,13 @@ spec:
 
 #### Input resources
 
-Use input [`PipelineResources`](resources.md) field to provide your `Task` with
-data or context that is needed by your `Task`. See the [using resources docs](./resources.md#using-resources).
+Use input [`PipelineResources`](/docs/pipelines/resources) field to provide your `Task` with
+data or context that is needed by your `Task`. See the [using resources docs](/docs/pipelines/resources#using-resources).
 
 ### Outputs
 
 `Task` definitions can include inputs and outputs
-[`PipelineResource`](resources.md) declarations. If specific set of resources
+[`PipelineResource`](/docs/pipelines/resources) declarations. If specific set of resources
 are only declared in output then a copy of resource to be uploaded or shared for
 next Task is expected to be present under the path
 `/workspace/output/resource_name/`.
@@ -412,7 +412,7 @@ to complement the volumes that are implicitly created for
 
 For example, use volumes to accomplish one of the following common tasks:
 
-- [Mount a Kubernetes secret](./auth.md).
+- [Mount a Kubernetes secret](/docs/pipelines/auth).
 - Create an `emptyDir` volume to act as a cache for use across multiple build
   steps. Consider using a persistent volume for inter-build caching.
 - Mount
@@ -428,7 +428,7 @@ For example, use volumes to accomplish one of the following common tasks:
 `workspaces` are a way of declaring volumes you expect to be made available to your
 executing `Task` and the path to make them available at. They are similar to
 [`volumes`](#volumes) but allow you to enforce at runtime that the volumes have
-been attached and [allow you to specify subpaths](taskruns.md#workspaces) in the volumes
+been attached and [allow you to specify subpaths](/docs/pipelines/taskruns#workspaces) in the volumes
 to attach.
 
 The volume will be made available at `/workspace/myworkspace`, or you can override
@@ -441,9 +441,9 @@ to the workspace declaration. This will in turn mark the volumeMount as `readOnl
 on the Task's underlying pod.
 
 The actual volumes must be provided at runtime
-[in the `TaskRun`](taskruns.md#workspaces).
+[in the `TaskRun`](/docs/pipelines/taskruns#workspaces).
 In a future iteration ([#1438](https://github.com/tektoncd/pipeline/issues/1438))
-it [will be possible to specify these in the `PipelineRun`](pipelineruns.md#workspaces)
+it [will be possible to specify these in the `PipelineRun`](/docs/pipelines/pipelineruns#workspaces)
 as well.
 
 For example:
@@ -503,7 +503,7 @@ server for your app to hit during tests.
 
 Sidecars are started before your Task's steps are executed and are torn
 down after all steps have completed. For further information about a sidecar's
-lifecycle see the [TaskRun doc](./taskruns.md#sidecars).
+lifecycle see the [TaskRun doc](/docs/pipelines/taskruns#sidecars).
 
 In the example below, a Docker in Docker sidecar is run so that a step can
 use it to build a docker image:
@@ -572,7 +572,7 @@ has been created to track this bug.
 #### Input and Output substitution
 
 [`inputs`](#inputs) and [`outputs`](#outputs) attributes can be used in replacements,
-including [`params`](#params) and [`resources`](./resources.md#variable-substitution).
+including [`params`](#params) and [`resources`](/docs/pipelines/resources#variable-substitution).
 
 Input parameters can be referenced in the `Task` spec using the variable substitution syntax below,
 where `<name>` is the name of the parameter:
@@ -581,7 +581,7 @@ where `<name>` is the name of the parameter:
 $(inputs.params.<name>)
 ```
 
-Param values from resources can also be accessed using [variable substitution](./resources.md#variable-substitution)
+Param values from resources can also be accessed using [variable substitution](/docs/pipelines/resources#variable-substitution)
 
 ##### Variable Substitution with Parameters of Type `Array`
 

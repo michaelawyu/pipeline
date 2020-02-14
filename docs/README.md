@@ -22,45 +22,45 @@ These resources run on-cluster and are implemented by
 
 High level details of this design:
 
-- [Pipelines](pipelines.md) do not know what will trigger them, they can be
-  triggered by events or by manually creating [PipelineRuns](pipelineruns.md)
-- [Tasks](tasks.md) can exist and be invoked completely independently of
-  [Pipelines](pipelines.md); they are highly cohesive and loosely coupled
-- [Tasks](tasks.md) can depend on artifacts and parameters created by other
+- [Pipelines](/docs/pipelines/pipelines) do not know what will trigger them, they can be
+  triggered by events or by manually creating [PipelineRuns](/docs/pipelines/pipelineruns)
+- [Tasks](/docs/pipelines/tasks) can exist and be invoked completely independently of
+  [Pipelines](/docs/pipelines/pipelines); they are highly cohesive and loosely coupled
+- [Tasks](/docs/pipelines/tasks) can depend on artifacts and parameters created by other
   tasks.
-- [Tasks](tasks.md) can be invoked via [TaskRuns](taskruns.md)
-- [PipelineResources](resources.md) are the artifacts used as inputs and outputs
+- [Tasks](/docs/pipelines/tasks) can be invoked via [TaskRuns](/docs/pipelines/taskruns)
+- [PipelineResources](/docs/pipelines/resources) are the artifacts used as inputs and outputs
   of Tasks.
 
 ## Usage
 
-- [How do I create a new Pipeline?](pipelines.md)
-- [How do I make a Task?](tasks.md)
-- [How do I make Resources?](resources.md)
-- [How do I control auth?](auth.md)
-- [How do I run a Pipeline?](pipelineruns.md)
-- [How do I run a Task on its own?](taskruns.md)
-- [How do I get logs?](logs.md)
+- [How do I create a new Pipeline?](/docs/pipelines/pipelines)
+- [How do I make a Task?](/docs/pipelines/tasks)
+- [How do I make Resources?](/docs/pipelines/resources)
+- [How do I control auth?](/docs/pipelines/auth)
+- [How do I run a Pipeline?](/docs/pipelines/pipelineruns)
+- [How do I run a Task on its own?](/docs/pipelines/taskruns)
+- [How do I get logs?](/docs/pipelines/logs)
 
 ## Learn more
 
 See the following reference topics for information about each of the build
 components:
 
-- [`Task`](tasks.md)
-- [`TaskRun`](taskruns.md)
-- [`Pipeline`](pipelines.md)
-- [`PipelineRun`](pipelineruns.md)
-- [`PipelineResource`](resources.md)
+- [`Task`](/docs/pipelines/tasks)
+- [`TaskRun`](/docs/pipelines/taskruns)
+- [`Pipeline`](/docs/pipelines/pipelines)
+- [`PipelineRun`](/docs/pipelines/pipelineruns)
+- [`PipelineResource`](/docs/pipelines/resources)
 
 Additional reference topics not related to a specific component:
 
-- [Labels](labels.md)
-- [Logs](logs.md)
+- [Labels](/docs/pipelines/labels)
+- [Logs](/docs/pipelines/logs)
 
 ## Try it out
 
-- Follow along with [the tutorial](tutorial.md)
+- Follow along with [the tutorial](https://github.com/tektoncd/pipeline/blob/master/docs/tutorial.md)
 - Look at
   [the examples](https://github.com/tektoncd/pipeline/tree/master/examples)
 

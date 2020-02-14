@@ -4,7 +4,7 @@ linkTitle: "Logs"
 weight: 8
 ---
 
-Logs for [`PipelineRuns`](pipelineruns.md) and [`TaskRuns`](taskruns.md) are
+Logs for [`PipelineRuns`](/docs/pipelines/pipelineruns) and [`TaskRuns`](/docs/pipelines/taskruns) are
 associated with the underlying pod.
 
 _In [#107](https://github.com/tektoncd/pipeline/issues/107) we will add a
